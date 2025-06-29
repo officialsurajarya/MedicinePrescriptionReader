@@ -23,7 +23,6 @@
             <ul>
                 <li><a href="#" class="active">Home</a></li>
                 <li><a href="#about">About Us</a></li>
-                <li><a href="#ocr">OCR</a></li>
                 <li><a href="#future">Future Plan</a></li>
                 <li><a href="#team">Our Team</a></li>
             </ul>
@@ -35,6 +34,19 @@
         <div class="hero-gradient-overlay"></div>
         <div class="hero-content">
             <h1>Unlocking Medical Handwriting — One Prescription at a Time!</h1>
+            <div class="ocr-box">
+                <form action="/predict" method="post" enctype="multipart/form-data">
+                    <input type="file" name="image" accept="image/*" required>
+                    <button type="submit">Analyze Image</button>
+                </form>
+                {% if image_path %}
+                <img src="{{ image_path }}" alt="Uploaded Image" width="200px">
+                <h2>📝 Predicted Text:</h2>
+                {% if prediction %}
+                <p>{{ prediction }}</p>
+                {% endif %}
+                {% endif %}
+            </div>
         </div>
     </section>
 
@@ -56,24 +68,6 @@
                     text — ensuring clarity, accuracy, and safety in healthcare.
                 </p>
             </div>
-        </div>
-    </section>
-
-    <!-- OCR -->
-    <section class="ocr-container" id="ocr">
-        <div class="ocr-box">
-            <h1>🏥 Prescription Reader AI</h1>
-            <form action="/predict" method="post" enctype="multipart/form-data">
-                <input type="file" name="image" accept="image/*" required>
-                <button type="submit">Analyze Image</button>
-            </form>
-            {% if prediction %}
-            <h2>📝 Predicted Text:</h2>
-            <p>{{ prediction }}</p>
-            {% if image_path %}
-            <img src="{{ image_path }}" alt="Uploaded Image">
-            {% endif %}
-            {% endif %}
         </div>
     </section>
 

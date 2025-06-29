@@ -55,22 +55,22 @@ new Swiper(".mySwiper", {
   },
 });
 
-// ----- Glow Bubble Trail Effect -----
-let lastTime = 0;
-document.addEventListener("mousemove", (e) => {
-  const now = Date.now();
-  if (now - lastTime < 30) return;
-  lastTime = now;
+// // ----- Glow Bubble Trail Effect -----
+// let lastTime = 0;
+// document.addEventListener("mousemove", (e) => {
+//   const now = Date.now();
+//   if (now - lastTime < 30) return;
+//   lastTime = now;
 
-  const bubble = document.createElement("div");
-  bubble.className = "bubble";
+//   const bubble = document.createElement("div");
+//   bubble.className = "bubble";
 
-  const size = Math.random() * 10 + 8;
-  bubble.style.width = `${size}px`;
-  bubble.style.height = `${size}px`;
-  bubble.style.left = `${e.clientX - size / 2}px`;
-  bubble.style.top = `${e.clientY - size / 2}px`;
+//   const size = Math.random() * 10 + 8;
+//   bubble.style.width = `${size}px`;
+//   bubble.style.height = `${size}px`;
+//   bubble.style.left = `${e.clientX - size / 2}px`;
+//   bubble.style.top = `${e.clientY - size / 2}px`;
 
-  document.body.appendChild(bubble);
-  setTimeout(() => bubble.remove(), 1000);
-});
+//   document.body.appendChild(bubble);
+//   setTimeout(() => bubble.remove(), 1000);
+// });
