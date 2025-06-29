@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Doctor's Prescription Reader</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header" id="home">
+        <div class="logo">
+            <img src="/static/assets/icon.png" alt="Logo" />
+        </div>
+        <div class="menu-toggle" id="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav class="navbar" id="navbar">
+            <ul>
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#ocr">OCR</a></li>
+                <li><a href="#future">Future Plan</a></li>
+                <li><a href="#team">Our Team</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-gradient-overlay"></div>
+        <div class="hero-content">
+            <h1>Unlocking Medical Handwriting — One Prescription at a Time!</h1>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-overlay"></div>
+        <div class="about-boxs">
+            <div class="about-box">
+                <h2>Problem Statement</h2>
+                <p>
+                    Medical prescriptions are often handwritten and illegible, leading to misinterpretations,
+                    errors in medicine dispensing, and risks to patient safety.
+                </p>
+            </div>
+            <div class="about-box">
+                <h2>Solution Statement</h2>
+                <p>
+                    Our AI-powered OCR model reads and translates handwritten prescriptions into accurate digital
+                    text — ensuring clarity, accuracy, and safety in healthcare.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- OCR -->
+    <section class="ocr-container" id="ocr">
+        <div class="ocr-box">
+            <h1>🏥 Prescription Reader AI</h1>
+            <form action="/predict" method="post" enctype="multipart/form-data">
+                <input type="file" name="image" accept="image/*" required>
+                <button type="submit">Analyze Image</button>
+            </form>
+            {% if prediction %}
+            <h2>📝 Predicted Text:</h2>
+            <p>{{ prediction }}</p>
+            {% if image_path %}
+            <img src="{{ image_path }}" alt="Uploaded Image">
+            {% endif %}
+            {% endif %}
+        </div>
+    </section>
+
+    <!-- Future Plan Section -->
+    <section class="future-plan" id="future">
+        <div class="future-plan-overlay"></div>
+        <div class="future-plan-content">
+            <h2>🚀 Future Plans</h2>
+            <p>We envision a smarter, safer healthcare system through continued innovation and AI-driven solutions.</p>
+            <ul class="plan-list">
+                <li><strong>🧠 <br> AI Enhancement: <br></strong> Improve prescription accuracy using advanced deep
+                    learning techniques.</li>
+                <li><strong>📱<br> Mobile App: <br></strong> Launch user-friendly mobile apps for real-time text
+                    extraction.</li>
+                <li><strong>🧾<br> EHR Sync: <br></strong> Integrate with Electronic Health Records to update patient
+                    data automatically.</li>
+                <li><strong>🌐<br> Language: <br></strong> Extend OCR to recognize and translate regional languages.
+                </li>
+                <li><strong>🔒<br> Data Privacy: <br></strong> Implement robust encryption and security for sensitive
+                    medical data.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="developer-section">
+        <div class="developer-overlay"></div>
+        <h2 class="section-heading">Our Developers</h2>
+
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <!-- Developer Cards -->
+                <div class="swiper-slide developer-card">
+                    <div class="developer-img">
+                        <img src="/static/assets/student1.png" alt="Suraj Arya">
+                    </div>
+                    <div class="developer-info">
+                        <h3>Suraj Arya</h3>
+                        <p><strong>College:</strong> AGI Lucknow</p>
+                        <p><strong>STT PRN No:</strong> 25068071579</p>
+                        <p><strong>Role:</strong> Frontend Developer</p>
+                    </div>
+                </div>
+
+                <div class="swiper-slide developer-card">
+                    <div class="developer-img">
+                        <img src="/static/assets/Prakriti.jpg" alt="Prakriti Bharti">
+                    </div>
+                    <div class="developer-info">
+                        <h3>Prakriti Bharti</h3>
+                        <p><strong>College:</strong> RRSDCE, Begusarai</p>
+                        <p><strong>STT PRN No:</strong> 25068071528</p>
+                        <p><strong>Role:</strong> Frontend Designer</p>
+                    </div>
+                </div>
+
+                <div class="swiper-slide developer-card">
+                    <div class="developer-img">
+                        <img src="/static/assets/Atul.jpg" alt="Atul Nayan">
+                    </div>
+                    <div class="developer-info">
+                        <h3>Atul Nayan</h3>
+                        <p><strong>College:</strong> RRSDCE, Begusarai</p>
+                        <p><strong>STT PRN No:</strong> 25068071510</p>
+                        <p><strong>Role:</strong> Back-End Developer</p>
+                    </div>
+                </div>
+
+                <div class="swiper-slide developer-card">
+                    <div class="developer-img">
+                        <img src="/static/assets/OM.jpg" alt="OM VINAYAK">
+                    </div>
+                    <div class="developer-info">
+                        <h3>Om Vinayak (TEAM LEADER)</h3>
+                        <p><strong>College:</strong> AMITY UNIVERSITY NOIDA</p>
+                        <p><strong>STT PRN No:</strong> 25068071526</p>
+                        <p><strong>Role:</strong> Back-End Developer & Overall Execution</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Swiper Controls (optional) -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Doctor's Prescription Reader. All rights reserved.</p>
+            <p>Developed by <a href="#team">Our Team</a></p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="/static/script.js"></script>
+</body>
+
+</html>
